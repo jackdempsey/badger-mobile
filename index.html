@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <script src='http://code.jquery.com/jquery-1.7.2.min.js'></script>
+    <script>
+      (function($){
+        $(function(){
+          //this executes on dom ready
+
+          var callback = function(){ //this in this context is the form selected previously, ie. search-form
+            url = "https://api.badger.com/domains/search?callback=?query="
+            url += $('#q').val();
+
+            $.getJSON(url, function(data) {
+              console.dir(data);
+            });
+
+
+
+            return false;
+          }
+
+          $('form').submit(callback);
+
+
+
+        });
+      })(jQuery);
+    </script>
+  </head>
+  <body>
+    <h1>Hello World Badger Mobile</h1>
+    <form id='search-form' action='' method='post'>
+      <input type='text' id='q' value="">
+      <input type='submit'>
+    </form>
+  </body>
+</html>
